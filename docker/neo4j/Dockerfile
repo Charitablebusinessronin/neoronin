@@ -9,6 +9,10 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
+# Copy custom entrypoint script
+COPY docker/neo4j/entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 USER neo4j
 
 # Default healthcheck is defined in docker-compose.yml
@@ -17,5 +21,4 @@ RUN mkdir -p /backups /var/lib/neo4j/data
 
 EXPOSE 7474 7687
 
-ENTRYPOINT ["/sbin/tini", "-g", "--"]
-CMD ["neo4j"]
+ENTRYPOINT ["/app/entrypoint.sh"]
