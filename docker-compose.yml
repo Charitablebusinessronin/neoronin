@@ -6,20 +6,22 @@ services:
       NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
       NEO4J_AUTH: "neo4j/Kamina2025*"
       NEO4J_apoc_export_allow__all__for__admin: "true"
+      NEO4J_apoc_export_file_enabled: "true"
+      NEO4J_apoc_import_file_enabled: "true"
       NEO4J_PLUGINS: '["apoc"]'
       NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
       NEO4J_dbms_security_procedures_allowlist: "apoc.*"
     ports:
-      - "127.0.0.1:7474:7474"  # HTTP (local only)
-      - "127.0.0.1:7687:7687"  # Bolt (local only)
+      - "7474:7474" # HTTP
+      - "7687:7687" # Bolt
     volumes:
       - grap-neo4j-data:/var/lib/neo4j/data
-      - grap-backups:/backups
+      - grap-backups:/var/lib/neo4j/import
       - ./docker/neo4j/plugins:/plugins
     networks:
       - grap-network
     healthcheck:
-      test: ["CMD", "cypher-shell", "-a", "bolt://localhost:7687", "-u", "neo4j", "-p", "Kamina2025*", "RETURN 1"]
+      test: [ "CMD", "cypher-shell", "-a", "bolt://localhost:7687", "-u", "neo4j", "-p", "Kamina2025*", "RETURN 1" ]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -39,7 +41,7 @@ services:
       NEO4J_USER: neo4j
       NEO4J_PASSWORD: Kamina2025*
       BACKUP_DIR: /app/backups
-      BACKUP_SCHEDULE: "0 2 * * *"  # 2 AM daily
+      BACKUP_SCHEDULE: "0 2 * * *" # 2 AM daily
       BACKUP_RETENTION_DAYS: 30
       BACKUP_COMPRESSION: "true"
       PROMOTE_AFTER_VALIDATION: "false"
@@ -57,53 +59,16 @@ services:
       - grap-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import logging; logging.getLogger().info('scheduler healthy')"]
+      test: [ "CMD", "python", "-c", "import logging; logging.getLogger().info('scheduler healthy')" ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
 
-  # Graphiti MCP Server
-  graphiti-mcp:
-    build:
-      context: .
-      dockerfile: docker/graphiti-mcp/Dockerfile
-    container_name: grap-graphiti-mcp
-    environment:
-      # OpenAI Configuration
-      OPENAI_API_KEY: ${OPENAI_API_KEY}
-      MODEL_NAME: ${GRAPHITI_MODEL_NAME:-gpt-4o-mini}
-      # Neo4j Configuration
-      NEO4J_URI: bolt://neo4j:7687
-      NEO4J_USER: ${NEO4J_USER:-neo4j}
-      NEO4J_PASSWORD: ${NEO4J_PASSWORD:-changeme}
-      # Database Provider
-      DATABASE_PROVIDER: neo4j
-      # Optional Configuration
-      GRAPHITI_TELEMETRY_ENABLED: ${GRAPHITI_TELEMETRY_ENABLED:-false}
-      # Transport configuration (http/SSE for Cursor)
-      TRANSPORT: sse
-    ports:
-      - "127.0.0.1:8000:8000"  # MCP HTTP transport
-    depends_on:
-      neo4j:
-        condition: service_healthy
-    volumes:
-      - ./.env:/app/.env:ro  # Mount .env for API keys
-    working_dir: /app/graphiti/mcp_server
-    command: ["sh", "-c", "uv run python main.py --database-provider neo4j --transport sse"]
-    networks:
-      - grap-network
-    restart: unless-stopped
-
-
 volumes:
   grap-neo4j-data:
-    # Using named volume instead of bind mount for better Docker Desktop/WSL2 compatibility
     driver: local
-
   grap-backups:
-    # Using named volume instead of bind mount for better Docker Desktop/WSL2 compatibility
     driver: local
 
 networks:

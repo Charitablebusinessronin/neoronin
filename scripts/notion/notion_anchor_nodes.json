@@ -1,0 +1,513 @@
+[
+  {
+    "id": "7a8c0bbe-6b4a-4262-86b4-c313a932c506",
+    "notion_id": "2661d9be-65b3-81df-8977-e88482d03583",
+    "title": "\ud83c\udfdb\ufe0f Ronin's Notion Hub - Master Directory & Command Center",
+    "type": "Hub",
+    "url": "https://www.notion.so/Ronin-s-Notion-Hub-Master-Directory-Command-Center-2661d9be65b381df8977e88482d03583",
+    "description": "Operational hub for Sabir Asheed's Notion workspace",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121622",
+    "updated_at": "2025-12-27T19:06:22.121669",
+    "metadata": {
+      "extracted_at": "2025-12-27T19:06:22.121671"
+    }
+  },
+  {
+    "id": "51a3fad8-3792-4e62-ac79-339732f76a56",
+    "notion_id": "21a1d9be-65b3-8016-b46e-f83c24dad63a",
+    "title": "Faith Meats",
+    "type": "Teamspace",
+    "url": "https://www.notion.so/21a1d9be65b38016b46ef83c24dad63a",
+    "description": "Premium halal beef jerky; Shopify Hydrogen migration.",
+    "tags": [
+      "Projects"
+    ],
+    "created_at": "2025-12-27T19:06:22.121686",
+    "updated_at": "2025-12-27T19:06:22.121688",
+    "metadata": {}
+  },
+  {
+    "id": "27f983a1-5a42-43e9-91dc-50d5af4f1445",
+    "notion_id": "2871d9be-65b3-80ef-abe9-de57c2d3c731",
+    "title": "Patriot Awning",
+    "type": "Teamspace",
+    "url": "https://www.notion.so/2871d9be65b380efabe9de57c2d3c731",
+    "description": "Commercial/residential awning company; Astro + Tailwind rebuild.",
+    "tags": [
+      "Projects"
+    ],
+    "created_at": "2025-12-27T19:06:22.121695",
+    "updated_at": "2025-12-27T19:06:22.121697",
+    "metadata": {}
+  },
+  {
+    "id": "f241f648-cd21-4a54-922c-225fe737c80c",
+    "notion_id": "2741d9be-65b3-80ee-a136-d85e0f5c2e8a",
+    "title": "Difference Driven",
+    "type": "Teamspace",
+    "url": "https://www.notion.so/2741d9be65b380eea136d85e0f5c2e8a",
+    "description": "Nonprofit community platform; Payload CMS website development.",
+    "tags": [
+      "Projects"
+    ],
+    "created_at": "2025-12-27T19:06:22.121702",
+    "updated_at": "2025-12-27T19:06:22.121703",
+    "metadata": {}
+  },
+  {
+    "id": "5367aec3-8390-4447-bf0e-c381e38d3c90",
+    "notion_id": "e5d3db1e-1290-4d33-bd1f-71f93cc36655",
+    "title": "Master Knowledge Base",
+    "type": "Database",
+    "url": "https://www.notion.so/e5d3db1e12904d33bd1f71f93cc36655",
+    "description": "",
+    "tags": [
+      "Databases"
+    ],
+    "created_at": "2025-12-27T19:06:22.121714",
+    "updated_at": "2025-12-27T19:06:22.121716",
+    "metadata": {}
+  },
+  {
+    "id": "a555946f-215c-4ec8-9ced-ffcbf23e6445",
+    "notion_id": "62baeeb2-8b17-436d-a92b-314128fb93cb",
+    "title": "AI Agents Registry",
+    "type": "Database",
+    "url": "https://www.notion.so/62baeeb28b17436da92b314128fb93cb",
+    "description": "",
+    "tags": [
+      "Databases"
+    ],
+    "created_at": "2025-12-27T19:06:22.121722",
+    "updated_at": "2025-12-27T19:06:22.121724",
+    "metadata": {}
+  },
+  {
+    "id": "5c5ec861-81bd-4c9c-939e-6e18ab12ab47",
+    "notion_id": "2a11d9be-65b3-8055-909b-fc277d4f47ed",
+    "title": "Prompt Database",
+    "type": "Database",
+    "url": "https://www.notion.so/2a11d9be65b38055909bfc277d4f47ed",
+    "description": "",
+    "tags": [
+      "Databases"
+    ],
+    "created_at": "2025-12-27T19:06:22.121731",
+    "updated_at": "2025-12-27T19:06:22.121733",
+    "metadata": {}
+  },
+  {
+    "id": "fa0522a9-eabb-4f14-a923-10b1132758d8",
+    "notion_id": "2c11d9be-65b3-80f8-868c-c1b5d896342b",
+    "title": "Agent activation prompt",
+    "type": "Database",
+    "url": "https://www.notion.so/2c11d9be65b380f8868cc1b5d896342b",
+    "description": "",
+    "tags": [
+      "Databases"
+    ],
+    "created_at": "2025-12-27T19:06:22.121737",
+    "updated_at": "2025-12-27T19:06:22.121739",
+    "metadata": {}
+  },
+  {
+    "id": "1f50ca8c-a5be-4667-a1e5-48f03fc95f54",
+    "notion_id": null,
+    "title": "Troy Davis",
+    "type": "Agent",
+    "url": null,
+    "description": "General Coding Agent (Spec-Kit SDD workflows across projects)",
+    "tags": [
+      "Active"
+    ],
+    "created_at": "2025-12-27T19:06:22.121745",
+    "updated_at": "2025-12-27T19:06:22.121747",
+    "metadata": {
+      "agent_type": "active"
+    }
+  },
+  {
+    "id": "00364a22-00e1-48ae-8fdf-a1be95ea4c6c",
+    "notion_id": null,
+    "title": "Steven",
+    "type": "Agent",
+    "url": null,
+    "description": "DD Product Manager (SpecKit oversight, constitution compliance, spec/plan reviews)",
+    "tags": [
+      "Active"
+    ],
+    "created_at": "2025-12-27T19:06:22.121753",
+    "updated_at": "2025-12-27T19:06:22.121754",
+    "metadata": {
+      "agent_type": "active"
+    }
+  },
+  {
+    "id": "953575af-0d33-4842-8766-0401d4d49e87",
+    "notion_id": null,
+    "title": "Tommy Oliver",
+    "type": "Agent",
+    "url": null,
+    "description": "Agent Builder & Workflow Architect (BMAD-compliant agent/workflow design)",
+    "tags": [
+      "Bmad"
+    ],
+    "created_at": "2025-12-27T19:06:22.121759",
+    "updated_at": "2025-12-27T19:06:22.121761",
+    "metadata": {
+      "agent_type": "bmad"
+    }
+  },
+  {
+    "id": "8deddac1-8e3d-441c-9699-3cff0c3ff14f",
+    "notion_id": null,
+    "title": "Ari Khalid",
+    "type": "Agent",
+    "url": null,
+    "description": "Investigative Researcher (primary-source hunting, decision-ready briefs)",
+    "tags": [
+      "Active"
+    ],
+    "created_at": "2025-12-27T19:06:22.121766",
+    "updated_at": "2025-12-27T19:06:22.121767",
+    "metadata": {
+      "agent_type": "active"
+    }
+  },
+  {
+    "id": "7c55cac5-6c5f-409c-9da0-628ff1c0abad",
+    "notion_id": null,
+    "title": "John",
+    "type": "Agent",
+    "url": null,
+    "description": "Product Manager (PRD creation, epics & stories)",
+    "tags": [
+      "Bmad"
+    ],
+    "created_at": "2025-12-27T19:06:22.121772",
+    "updated_at": "2025-12-27T19:06:22.121774",
+    "metadata": {
+      "agent_type": "bmad"
+    }
+  },
+  {
+    "id": "64ca4411-6910-4747-abd2-b63ef2d7a5c0",
+    "notion_id": null,
+    "title": "Troy",
+    "type": "Agent",
+    "url": null,
+    "description": "Developer Agent (code implementation)",
+    "tags": [
+      "Bmad"
+    ],
+    "created_at": "2025-12-27T19:06:22.121778",
+    "updated_at": "2025-12-27T19:06:22.121780",
+    "metadata": {
+      "agent_type": "bmad"
+    }
+  },
+  {
+    "id": "bcaeb664-2128-4cc8-a0d5-9a1c84952a43",
+    "notion_id": null,
+    "title": "Sally",
+    "type": "Agent",
+    "url": null,
+    "description": "UX Designer (design collaboration)",
+    "tags": [
+      "Bmad"
+    ],
+    "created_at": "2025-12-27T19:06:22.121784",
+    "updated_at": "2025-12-27T19:06:22.121786",
+    "metadata": {
+      "agent_type": "bmad"
+    }
+  },
+  {
+    "id": "98a42485-4d57-43cb-8c10-7db70e65ad0d",
+    "notion_id": null,
+    "title": "BMad Builder",
+    "type": "Agent",
+    "url": null,
+    "description": "agent/workflow creation and maintenance",
+    "tags": [
+      "Bmad"
+    ],
+    "created_at": "2025-12-27T19:06:22.121790",
+    "updated_at": "2025-12-27T19:06:22.121792",
+    "metadata": {
+      "agent_type": "bmad"
+    }
+  },
+  {
+    "id": "0fec7478-b753-4baf-821b-dec5199687e6",
+    "notion_id": null,
+    "title": "Technical",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: Vercel, Docker, API, Database, Authentication, Infrastructure",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121798",
+    "updated_at": "2025-12-27T19:06:22.121802",
+    "metadata": {
+      "tags": [
+        "Vercel",
+        "Docker",
+        "API",
+        "Database",
+        "Authentication",
+        "Infrastructure"
+      ]
+    }
+  },
+  {
+    "id": "55ae2f97-dbfe-4ff5-a45f-165e5c35ac9c",
+    "notion_id": null,
+    "title": "Programming",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: Python, JavaScript, TypeScript, React, Next.js",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121808",
+    "updated_at": "2025-12-27T19:06:22.121810",
+    "metadata": {
+      "tags": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js"
+      ]
+    }
+  },
+  {
+    "id": "e5e12718-04a1-4b36-bae2-216b23700fbb",
+    "notion_id": null,
+    "title": "AI/ML",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: LLM, RAG, Embeddings, Vector Search, Claude, Archon",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121816",
+    "updated_at": "2025-12-27T19:06:22.121818",
+    "metadata": {
+      "tags": [
+        "LLM",
+        "RAG",
+        "Embeddings",
+        "Vector Search",
+        "Claude",
+        "Archon"
+      ]
+    }
+  },
+  {
+    "id": "793e20fa-05c4-497a-b3f3-afd1b55bed9b",
+    "notion_id": null,
+    "title": "Business",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: Sales, CRM, Pricing, Healthcare, Halal Food",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121825",
+    "updated_at": "2025-12-27T19:06:22.121827",
+    "metadata": {
+      "tags": [
+        "Sales",
+        "CRM",
+        "Pricing",
+        "Healthcare",
+        "Halal Food"
+      ]
+    }
+  },
+  {
+    "id": "ca927512-1082-490a-8c0b-1292e2b624bb",
+    "notion_id": null,
+    "title": "Projects",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: Faith Meats, Snug Kisses, Dam Restoration, Difference Driven",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121832",
+    "updated_at": "2025-12-27T19:06:22.121834",
+    "metadata": {
+      "tags": [
+        "Faith Meats",
+        "Snug Kisses",
+        "Dam Restoration",
+        "Difference Driven"
+      ]
+    }
+  },
+  {
+    "id": "0eb1df88-ab1e-47a7-b6f8-546f0b27d61f",
+    "notion_id": null,
+    "title": "Content",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: Documentation, Guide, Tutorial, Template, Reference",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121843",
+    "updated_at": "2025-12-27T19:06:22.121845",
+    "metadata": {
+      "tags": [
+        "Documentation",
+        "Guide",
+        "Tutorial",
+        "Template",
+        "Reference"
+      ]
+    }
+  },
+  {
+    "id": "9728e630-1963-4b89-a765-a320aded88af",
+    "notion_id": null,
+    "title": "Status",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: Urgent, Completed, In Progress, Needs Review",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121850",
+    "updated_at": "2025-12-27T19:06:22.121855",
+    "metadata": {
+      "tags": [
+        "Urgent",
+        "Completed",
+        "In Progress",
+        "Needs Review"
+      ]
+    }
+  },
+  {
+    "id": "036b302a-08f1-4523-b254-e234ac2fca87",
+    "notion_id": null,
+    "title": "Access",
+    "type": "TagCategory",
+    "url": null,
+    "description": "Tag category: Public, Internal, Example, Backup",
+    "tags": [],
+    "created_at": "2025-12-27T19:06:22.121862",
+    "updated_at": "2025-12-27T19:06:22.121864",
+    "metadata": {
+      "tags": [
+        "Public",
+        "Internal",
+        "Example",
+        "Backup"
+      ]
+    }
+  },
+  {
+    "id": "d0f009d3-dfda-4624-ac75-3549de813ddf",
+    "notion_id": null,
+    "title": "Archon Project",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: Archon Project",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121869",
+    "updated_at": "2025-12-27T19:06:22.121872",
+    "metadata": {}
+  },
+  {
+    "id": "7f5fc020-a201-45ee-9057-aecc818d51df",
+    "notion_id": null,
+    "title": "AI Learning Notes",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: AI Learning Notes",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121877",
+    "updated_at": "2025-12-27T19:06:22.121879",
+    "metadata": {}
+  },
+  {
+    "id": "78862d86-f6b3-4126-947c-9a399de19f64",
+    "notion_id": null,
+    "title": "RAG",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: RAG",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121885",
+    "updated_at": "2025-12-27T19:06:22.121887",
+    "metadata": {}
+  },
+  {
+    "id": "97f324ec-739a-4508-952b-7321964b9ddd",
+    "notion_id": null,
+    "title": "Coding & Development",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: Coding & Development",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121892",
+    "updated_at": "2025-12-27T19:06:22.121894",
+    "metadata": {}
+  },
+  {
+    "id": "011ecfbb-2d2b-473a-8d3d-4c340a7e7e88",
+    "notion_id": null,
+    "title": "Faith Meats",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: Faith Meats",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121899",
+    "updated_at": "2025-12-27T19:06:22.121901",
+    "metadata": {}
+  },
+  {
+    "id": "863dc3ec-b888-457b-9990-ec549139e7ff",
+    "notion_id": null,
+    "title": "Project Management",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: Project Management",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121906",
+    "updated_at": "2025-12-27T19:06:22.121908",
+    "metadata": {}
+  },
+  {
+    "id": "216d20a3-f546-40d0-8224-cf049b6103c1",
+    "notion_id": null,
+    "title": "Research & Discovery",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: Research & Discovery",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121913",
+    "updated_at": "2025-12-27T19:06:22.121915",
+    "metadata": {}
+  },
+  {
+    "id": "16a54f7b-6c6b-4a61-9f4e-d5d3be1fa18a",
+    "notion_id": null,
+    "title": "Team Knowledge",
+    "type": "KnowledgeCategory",
+    "url": null,
+    "description": "Knowledge base category: Team Knowledge",
+    "tags": [
+      "Knowledge Base"
+    ],
+    "created_at": "2025-12-27T19:06:22.121920",
+    "updated_at": "2025-12-27T19:06:22.121922",
+    "metadata": {}
+  }
+]
