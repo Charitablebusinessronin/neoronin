@@ -2,16 +2,16 @@
 
 ## Phase 1: The Purge (Accidental Complexity Removal)
 
-- [/] Remove `mem0`, `qdrant`, and `graphiti` from `docker-compose.yml`.
-- [ ] Apply changes (`docker compose up -d --remove-orphans`).
-- [ ] Verify `neo4j` and `backup-scheduler` constitute the entire running stack.
+- [x] Remove `mem0`, `qdrant`, and `graphiti` from `docker-compose.yml`.
+- [x] Apply changes (`docker compose up -d --remove-orphans`).
+- [x] Verify `neo4j` and `backup-scheduler` constitute the entire running stack.
 
 ## Phase 2: Durability & Integrity
 
-- [/] Verify `grap-backup-scheduler` is correctly targeting the `grap-neo4j` container.
+- [x] Verify `grap-backup-scheduler` is correctly targeting the `grap-neo4j` container.
 - [x] Fix Backup Strategy (Switched to APOC export).
-- [ ] Perform manual backup test.
-- [/] Verify Neo4j MCP connectivity (Data Modeling, Memory, Cypher).
+- [x] Perform manual backup test.
+- [x] Verify Neo4j MCP connectivity (Data Modeling, Memory, Cypher).
 
 ## Phase 3: Documentation
 
