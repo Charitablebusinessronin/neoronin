@@ -28,7 +28,7 @@ Initialize a production-ready test framework architecture (Playwright or Cypress
 ### Actions
 
 1. **Validate package.json**
-   - Read `{project-root}/package.json`
+   - Read `./package.json`
    - Extract project type (React, Vue, Angular, Next.js, Node, etc.)
    - Identify bundler (Vite, Webpack, Rollup, esbuild)
    - Note existing test dependencies
@@ -76,7 +76,7 @@ Initialize a production-ready test framework architecture (Playwright or Cypress
 2. **Create Directory Structure**
 
    ```
-   {project-root}/
+   ./
    ├── tests/                        # Root test directory
    │   ├── e2e/                      # Test files (users organize as needed)
    │   ├── support/                  # Framework infrastructure (key pattern)
@@ -355,7 +355,7 @@ Read `{config_source}` and check `config.tea_use_playwright_utils`.
 
 **If `config.tea_use_playwright_utils: true` (Playwright Utils Integration):**
 
-Consult `{project-root}/_bmad/bmm/testarch/tea-index.csv` and load:
+Consult `./_bmad/bmm/testarch/tea-index.csv` and load:
 
 - `overview.md` - Playwright utils installation and design principles
 - `fixtures-composition.md` - mergeTests composition with playwright-utils
@@ -375,7 +375,7 @@ Recommend adding burn-in and network-error-monitor to merged fixtures for enhanc
 
 **If `config.tea_use_playwright_utils: false` (Traditional Patterns):**
 
-Consult `{project-root}/_bmad/bmm/testarch/tea-index.csv` and load:
+Consult `./_bmad/bmm/testarch/tea-index.csv` and load:
 
 - `fixture-architecture.md` - Pure function → fixture → `mergeTests` composition with auto-cleanup (406 lines, 5 examples)
 - `data-factories.md` - Faker-based factories with overrides, nested factories, API seeding, auto-cleanup (498 lines, 5 examples)

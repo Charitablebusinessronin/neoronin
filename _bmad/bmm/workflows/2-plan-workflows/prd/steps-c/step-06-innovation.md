@@ -10,8 +10,8 @@ outputFile: '{planning_artifacts}/prd.md'
 projectTypesCSV: '../data/project-types.csv'
 
 # Task References
-advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
-partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
+advancedElicitationTask: './_bmad/core/workflows/advanced-elicitation/workflow.xml'
+partyModeWorkflow: './_bmad/core/workflows/party-mode/workflow.md'
 ---
 
 # Step 6: Innovation Discovery

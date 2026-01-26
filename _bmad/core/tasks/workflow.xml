@@ -23,7 +23,7 @@
         <mandate>Load config_source (REQUIRED for all modules)</mandate>
         <phase n="1">Load external config from config_source path</phase>
         <phase n="2">Resolve all {config_source}: references with values from config</phase>
-        <phase n="3">Resolve system variables (date:system-generated) and paths ({project-root}, {installed_path})</phase>
+        <phase n="3">Resolve system variables (date:system-generated) and paths (., {installed_path})</phase>
         <phase n="4">Ask user for input of any variables that are still unknown</phase>
       </substep>
 
@@ -74,14 +74,14 @@
           <action>Display generated content</action>
           <ask> [a] Advanced Elicitation, [c] Continue, [p] Party-Mode, [y] YOLO the rest of this document only. WAIT for response. <if
               response="a">
-              <action>Start the advanced elicitation workflow {project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml</action>
+              <action>Start the advanced elicitation workflow ./_bmad/core/workflows/advanced-elicitation/workflow.xml</action>
             </if>
             <if
               response="c">
               <action>Continue to next step</action>
             </if>
             <if response="p">
-              <action>Start the party-mode workflow {project-root}/_bmad/core/workflows/party-mode/workflow.yaml</action>
+              <action>Start the party-mode workflow ./_bmad/core/workflows/party-mode/workflow.yaml</action>
             </if>
             <if
               response="y">
@@ -225,7 +225,7 @@
     <critical-rules>
       • This is the complete workflow execution engine
       • You MUST Follow instructions exactly as written
-      • The workflow execution engine is governed by: {project-root}/_bmad/core/tasks/workflow.xml
+      • The workflow execution engine is governed by: ./_bmad/core/tasks/workflow.xml
       • You MUST have already loaded and processed: {installed_path}/workflow.yaml
       • This workflow uses INTENT-DRIVEN PLANNING - adapt organically to product type and context
       • YOU ARE FACILITATING A CONVERSATION With a user to produce a final document step by step. The whole process is meant to be

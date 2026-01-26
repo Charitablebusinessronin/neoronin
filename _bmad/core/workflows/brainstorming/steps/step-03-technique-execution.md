@@ -1,7 +1,7 @@
 # Step 3: Interactive Technique Execution and Facilitation
 
 ---
-advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
+advancedElicitationTask: './_bmad/core/workflows/advanced-elicitation/workflow.xml'
 ---
 
 ## MANDATORY EXECUTION RULES (READ FIRST):

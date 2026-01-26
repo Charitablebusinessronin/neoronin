@@ -1,13 +1,13 @@
 ---
 name: quick-spec
 description: Conversational spec engineering - ask questions, investigate code, produce implementation-ready tech-spec.
-main_config: '{project-root}/_bmad/bmm/config.yaml'
+main_config: './_bmad/bmm/config.yaml'
 web_bundle: true
 
 # Checkpoint handler paths
-advanced_elicitation: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
-party_mode_exec: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
-quick_dev_workflow: '{project-root}/_bmad/bmm/workflows/bmad-quick-flow/quick-dev/workflow.md'
+advanced_elicitation: './_bmad/core/workflows/advanced-elicitation/workflow.xml'
+party_mode_exec: './_bmad/core/workflows/party-mode/workflow.md'
+quick_dev_workflow: './_bmad/bmm/workflows/bmad-quick-flow/quick-dev/workflow.md'
 ---
 
 # Quick-Spec Workflow

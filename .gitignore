@@ -46,9 +46,7 @@ docker-compose.override.yml
 .dockerignore
 
 # Environment variables
-.env
-.env.local
-.env.*.local
+
 
 # IDE
 .vscode/

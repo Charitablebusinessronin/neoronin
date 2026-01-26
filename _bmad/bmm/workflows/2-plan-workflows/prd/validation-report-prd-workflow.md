@@ -301,7 +301,7 @@ editWorkflow: './steps-e/step-e-01-discovery.md'
 #### ✅ Configuration & Installation - WORKING AS DESIGNED
 
 **1. BMM Config Reference:**
-- Path: `{project-root}/_bmad/bmm/config.yaml`
+- Path: `./_bmad/bmm/config.yaml`
 - **Status:** ✅ Correct installation-time placeholder
 - Resolves to actual config during workflow installation
 - **Note:** This is expected behavior, not an issue
@@ -323,7 +323,7 @@ editWorkflow: './steps-e/step-e-01-discovery.md'
 #### Configuration Analysis
 
 **Placeholder Usage:**
-- `{project-root}`: ✅ Properly used
+- `.`: ✅ Properly used
 - `{planning_artifacts}`: ⚠️ Referenced but folder missing
 - `{nextStep}`, `{validateWorkflow}`, etc: ✅ Properly resolved
 

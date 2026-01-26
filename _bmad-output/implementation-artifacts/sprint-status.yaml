@@ -2,7 +2,7 @@
 # project: Neo4j
 # project_key: neo4j
 # tracking_system: file-system
-# story_location: "{project-root}/_bmad-output/implementation-artifacts"
+# story_location: "./_bmad-output/implementation-artifacts"
 
 # STATUS DEFINITIONS:
 # ==================
@@ -33,11 +33,11 @@
 # - SM typically creates next story after previous one is 'done' to incorporate learnings
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
-generated: 2026-01-25
-project: Neo4j
-project_key: neo4j
+generated: 2026-01-26
+project: BMAD Agent Memory Integration
+project_key: bmad-memory-integration
 tracking_system: file-system
-story_location: "{project-root}/_bmad-output/implementation-artifacts"
+story_location: "./_bmad-output/implementation-artifacts"
 
 development_status:
   # Epic 1: Agents Capture Their Learning
@@ -63,15 +63,15 @@ development_status:
   epic-3-retrospective: optional
 
   # Epic 4: System Maintains Itself
-  epic-4: in-progress
+  epic-4: done
   4-1-apply-temporal-decay-to-stale-insights: done
   4-2-track-pattern-effectiveness-daily: done
   4-3-aggregate-old-events: done
-  4-4-detect-and-resolve-orphaned-relationships: backlog
-  4-5-escalate-pattern-contradictions-for-review: backlog
+  4-4-detect-and-resolve-orphaned-relationships: done
+  4-5-escalate-pattern-contradictions-for-review: done
   epic-4-retrospective: optional
 
   # Epic 5: Learning is Visible
-  epic-5: backlog
-  5-1-export-learning-metrics-to-prometheus: backlog
+  epic-5: done
+  5-1-export-learning-metrics-to-prometheus: done
   epic-5-retrospective: optional

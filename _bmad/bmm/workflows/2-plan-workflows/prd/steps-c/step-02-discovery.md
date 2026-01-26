@@ -11,8 +11,8 @@ projectTypesCSV: '../data/project-types.csv'
 domainComplexityCSV: '../data/domain-complexity.csv'
 
 # Task References
-advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
-partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
+advancedElicitationTask: './_bmad/core/workflows/advanced-elicitation/workflow.xml'
+partyModeWorkflow: './_bmad/core/workflows/party-mode/workflow.md'
 ---
 
 # Step 2: Project Discovery

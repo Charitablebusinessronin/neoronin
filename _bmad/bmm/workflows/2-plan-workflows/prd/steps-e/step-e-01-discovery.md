@@ -4,9 +4,9 @@ description: 'Discovery & Understanding - Understand what user wants to edit and
 
 # File references (ONLY variables used in this step)
 altStepFile: './step-e-01b-legacy-conversion.md'
-prdPurpose: '{project-root}/src/modules/bmm/workflows/2-plan-workflows/prd/data/prd-purpose.md'
-advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
-partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
+prdPurpose: './src/modules/bmm/workflows/2-plan-workflows/prd/data/prd-purpose.md'
+advancedElicitationTask: './_bmad/core/workflows/advanced-elicitation/workflow.xml'
+partyModeWorkflow: './_bmad/core/workflows/party-mode/workflow.md'
 ---
 
 # Step E-1: Discovery & Understanding

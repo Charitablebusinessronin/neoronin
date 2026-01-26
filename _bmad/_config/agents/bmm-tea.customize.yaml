@@ -29,7 +29,7 @@ menu: []
 # Example:
 # menu:
 #   - trigger: my-workflow
-#     workflow: "{project-root}/custom/my.yaml"
+#     workflow: "./custom/my.yaml"
 #     description: My custom workflow
 
 # Add custom prompts (for action="#id" handlers)
