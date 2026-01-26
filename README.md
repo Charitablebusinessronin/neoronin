@@ -121,6 +121,29 @@ Packages include:
 - Installation scripts for each component
 - Complete documentation
 
+## 🚀 BMAD Portability & Multi-Project Use
+
+BMAD is designed to be a portable "Brain and Engine" that you can install in any project.
+
+### 📦 Download via GitHub Releases
+You can download pre-packaged versions of BMAD from the [Releases](https://github.com/Charitablebusinessronin/neoronin/releases) page:
+- **bmad-agents.tar.gz**: Just the 9 agents and Neo4j schemas.
+- **bmad-workflows.tar.gz**: The complete custom workflow system.
+- **bmad-containers.tar.gz**: The Docker infrastructure stack.
+- **bmad-complete.tar.gz**: The full system snapshot.
+
+### ⚡ Quick Install (npx-style)
+To install BMAD into a new project directory, run this command:
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Charitablebusinessronin/neoronin/main/scripts/setup/install_bmad.sh)"
+```
+
+### 🔁 Synchronizing Agent Personas
+If you want to update your "Global Master" agents in other projects:
+1. Update the persona in this repository's `_bmad/bmm/agents/`.
+2. Commit and Tag a new release (`bash scripts/distribution/create_release.sh v1.1.0`).
+3. Download and overwrite the `_bmad` folder in your other projects.
+
 ## Quick Start
 
 ### Prerequisites
