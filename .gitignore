@@ -69,3 +69,5 @@ Thumbs.db
 .github/
 .gitlab-ci.yml
 .circleci/
+# TTS audio files - generated artifacts
+.claude/audio/
