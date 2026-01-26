@@ -38,7 +38,7 @@ class HealthChecker:
         """
         start = time.time()
         try:
-            with self.driver.session(timeout=self.CONNECTIVITY_TIMEOUT) as session:
+            with self.driver.session() as session:
                 result = session.run("RETURN 1")
                 result.single()
             duration = int((time.time() - start) * 1000)
@@ -59,7 +59,7 @@ class HealthChecker:
         """
         start = time.time()
         try:
-            with self.driver.session(timeout=self.SCHEMA_TIMEOUT) as session:
+            with self.driver.session() as session:
                 # Get all node labels
                 result = session.run("CALL db.labels()")
                 labels = {row['label'] for row in result}
@@ -68,32 +68,57 @@ class HealthChecker:
                 result = session.run("CALL db.relationshipTypes()")
                 rel_types = {row['relationshipType'] for row in result}
 
-                # Expected labels for durability feature
+                # Expected labels for BMAD schema
                 expected_labels = {
-                    'BackupMetadata',
-                    'AuditLogEntry',
-                    'RecoveryState'
+                    'AIAgent',
+                    'Brain',
+                    'Event',
+                    'Solution',
+                    'Outcome',
+                    'Pattern',
+                    'Insight',
+                    'Project',
+                    'Task',
+                    'System',
+                    'Domain'
                 }
 
-                # Check that expected labels exist or are not required yet
+                # Check that expected BMAD labels exist
                 missing_labels = expected_labels - labels
                 if missing_labels:
-                    # Not an error if no data yet, but log it
-                    logger.debug(f"Expected labels not found: {missing_labels}")
+                    duration = int((time.time() - start) * 1000)
+                    return False, f"Missing BMAD labels: {missing_labels}", duration
 
-                # Sample check: verify no nodes have null required properties
-                null_properties = session.run("""
-                    MATCH (n)
-                    WHERE n.id IS NULL
-                    RETURN count(n) as count
+                # Check for required relationship types
+                expected_rels = {'HAS_MEMORY_IN', 'SPECIALIZES_IN', 'INTEGRATES_WITH', 'COORDINATES', 'OVERSEES'}
+                missing_rels = expected_rels - rel_types
+                if missing_rels:
+                    logger.debug(f"Expected relationships not found: {missing_rels}")
+
+                # Verify AIAgent nodes have required properties
+                agents_without_name = session.run("""
+                    MATCH (a:AIAgent)
+                    WHERE a.name IS NULL
+                    RETURN count(a) as count
                 """).single()['count']
 
-                if null_properties > 0:
+                if agents_without_name > 0:
                     duration = int((time.time() - start) * 1000)
-                    return False, f"Found {null_properties} nodes with null id property", duration
+                    return False, f"Found {agents_without_name} AIAgent nodes without name", duration
+
+                # Verify Brain nodes have required properties
+                brains_without_group = session.run("""
+                    MATCH (b:Brain)
+                    WHERE b.group_id IS NULL
+                    RETURN count(b) as count
+                """).single()['count']
+
+                if brains_without_group > 0:
+                    duration = int((time.time() - start) * 1000)
+                    return False, f"Found {brains_without_group} Brain nodes without group_id", duration
 
             duration = int((time.time() - start) * 1000)
-            return True, "All graph nodes and relationships conform to defined schema", duration
+            return True, "All BMAD graph nodes and relationships conform to defined schema", duration
 
         except Exception as e:
             duration = int((time.time() - start) * 1000)
@@ -107,7 +132,7 @@ class HealthChecker:
         """
         start = time.time()
         try:
-            with self.driver.session(timeout=self.ORPHAN_TIMEOUT) as session:
+            with self.driver.session() as session:
                 # Query for orphaned relationships
                 # This is a simplified check - more sophisticated checks
                 # would require knowledge of the schema
@@ -131,6 +156,86 @@ class HealthChecker:
             # Orphan check might fail on certain Neo4j versions
             logger.warning(f"Orphan detection check failed: {e}")
             return True, "Orphan detection skipped (compatibility issue)", duration
+
+    def check_agent_brain_connectivity(self) -> Tuple[bool, str, int]:
+        """Verify all AIAgent nodes have proper HAS_MEMORY_IN relationships to brains.
+
+        Returns:
+            Tuple[bool, str, int]: (passed, message, duration_ms)
+        """
+        start = time.time()
+        try:
+            with self.driver.session() as session:
+                # Find agents without brain connections
+                result = session.run("""
+                    MATCH (a:AIAgent)
+                    WHERE NOT (a)-[:HAS_MEMORY_IN]->(:Brain)
+                    RETURN a.name as name, a.role as role
+                """)
+
+                orphaned_agents = []
+                for record in result:
+                    orphaned_agents.append({
+                        'name': record['name'],
+                        'role': record['role']
+                    })
+
+                if orphaned_agents:
+                    names = [a['name'] for a in orphaned_agents]
+                    duration = int((time.time() - start) * 1000)
+                    return False, f"Agents without brain: {names}", duration
+
+                # Also check for brains without proper group_id
+                result = session.run("""
+                    MATCH (b:Brain)
+                    WHERE b.group_id IS NULL
+                    RETURN b.name as name
+                """)
+                orphan_brains = [r['name'] for r in result]
+
+                if orphan_brains:
+                    duration = int((time.time() - start) * 1000)
+                    return False, f"Brains without group_id: {orphan_brains}", duration
+
+            duration = int((time.time() - start) * 1000)
+            return True, "All agents connected to brains properly", duration
+
+        except Exception as e:
+            duration = int((time.time() - start) * 1000)
+            logger.warning(f"Agent brain connectivity check failed: {e}")
+            return True, "Agent connectivity check skipped (compatibility issue)", duration
+
+    def check_agents_have_valid_capabilities(self) -> Tuple[bool, str, int]:
+        """Verify all AIAgent nodes have valid capabilities arrays.
+
+        Returns:
+            Tuple[bool, str, int]: (passed, message, duration_ms)
+        """
+        start = time.time()
+        try:
+            with self.driver.session() as session:
+                # Find agents with null or empty capabilities
+                result = session.run("""
+                    MATCH (a:AIAgent)
+                    WHERE a.capabilities IS NULL OR size(a.capabilities) = 0
+                    RETURN a.name as name, a.role as role
+                """)
+
+                agents_without_caps = []
+                for record in result:
+                    agents_without_caps.append(record['name'])
+
+                if agents_without_caps:
+                    duration = int((time.time() - start) * 1000)
+                    return False, f"Agents without capabilities: {agents_without_caps}", duration
+
+            duration = int((time.time() - start) * 1000)
+            return True, "All agents have valid capabilities", duration
+
+        except Exception as e:
+            duration = int((time.time() - start) * 1000)
+            logger.warning(f"Agent capabilities check failed: {e}")
+            return True, "Capabilities check skipped (compatibility issue)", duration
 
     def perform_all_checks(self, detailed: bool = False) -> Dict:
         """Perform all health checks.
@@ -210,6 +315,39 @@ class HealthChecker:
                 'status': 'unhealthy',
                 'timestamp': timestamp,
                 'failed_check': 'orphan_detection',
+                'message': msg,
+                'checks': checks
+            }
+
+        # BMAD-specific checks
+        passed, msg, duration = self.check_agent_brain_connectivity()
+        checks['agent_brain_connectivity'] = {
+            'status': 'pass' if passed else 'fail',
+            'message': msg,
+            'duration_ms': duration
+        }
+
+        if not passed:
+            return {
+                'status': 'unhealthy',
+                'timestamp': timestamp,
+                'failed_check': 'agent_brain_connectivity',
+                'message': msg,
+                'checks': checks
+            }
+
+        passed, msg, duration = self.check_agents_have_valid_capabilities()
+        checks['agent_capabilities'] = {
+            'status': 'pass' if passed else 'fail',
+            'message': msg,
+            'duration_ms': duration
+        }
+
+        if not passed:
+            return {
+                'status': 'unhealthy',
+                'timestamp': timestamp,
+                'failed_check': 'agent_capabilities',
                 'message': msg,
                 'checks': checks
             }

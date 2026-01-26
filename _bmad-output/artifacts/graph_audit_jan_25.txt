@@ -1,0 +1,272 @@
+╔════════════════════════════════════════════════════════════════╗
+║        Neo4j Graph Database Audit - 2026-01-25 13:22        ║
+╚════════════════════════════════════════════════════════════════╝
+
+[1/11] Database Statistics...
+nodeCount, relCount
+229, 224
+
+[2/11] Node Types...
+type, count
+["Memory", "Event"], 32
+["Memory", "Insight"], 27
+["Memory", "Outcome"], 19
+["Memory", "Skill"], 10
+["Memory", "Tool"], 8
+["AIAgent"], 8
+["Memory", "DesignDecision"], 7
+["FailureMode"], 6
+["Memory", "DebugSession"], 6
+["PerformanceMetric"], 5
+["SecurityConcern"], 5
+["Memory", "Architecture Pattern"], 5
+["Memory", "Project"], 5
+["SystemComponent"], 4
+["Memory", "MCP Server"], 4
+["ContainerTech"], 3
+["Memory", "Protocol"], 3
+["Memory", "Integration"], 3
+["Memory", "Feature"], 3
+["Memory", "supplier"], 3
+["Memory", "lead"], 3
+["ArchitecturePattern"], 2
+["TransportProtocol"], 2
+["ProblemDomain"], 2
+["Memory", "Architecture"], 2
+["Memory", "Integration Method"], 2
+["Memory", "pattern"], 2
+["Memory", "project"], 2
+["Memory", "tool"], 2
+["Memory", "Configuration"], 2
+["Memory", "Architecture Concept"], 2
+["Memory", "Framework"], 2
+["BackupMetadata"], 1
+["Memory", "IncidentReport"], 1
+["Memory", "KnowledgeMapping"], 1
+["Memory", "Infrastructure"], 1
+["Memory", "FrameworkBestPractices"], 1
+["Memory", "OptimizationGuide"], 1
+["Memory", "MetricsStandard"], 1
+["Memory", "DiagnosticTool"], 1
+["Memory", "Deployment Pattern"], 1
+["Memory", "Agent Pattern"], 1
+["Memory", "Prompt Template"], 1
+["Memory", "Knowledge Management"], 1
+["Memory", "API Constraint"], 1
+["Memory", "Tool Set"], 1
+["Memory", "AIAgent"], 1
+["Memory", "person"], 1
+["Memory", "problem"], 1
+["Memory", "knowledge"], 1
+["Memory", "technique"], 1
+["Memory", "architecture"], 1
+["Memory", "principle"], 1
+["Memory", "solution"], 1
+["Memory", "technology"], 1
+["Memory", "Application"], 1
+["Memory", "Environment"], 1
+["Memory", "Database"], 1
+["Memory", "ProjectStructure"], 1
+["Memory", "development_platform"], 1
+["Memory", "ai_agent_persona"], 1
+["Memory", "Architectural Analysis"], 1
+["Memory", "Software Engineering Challenge"], 1
+["Memory", "Architectural Review", "Architectural Assessment"], 1
+["Memory", "Architectural Pattern"], 1
+["Memory", "System"], 1
+["Memory", "Standard"], 1
+["Memory", "Schema"], 1
+["Memory", "AgentPersona"], 1
+["Memory", "AnalyticalFramework"], 1
+
+[3/11] Relationship Types...
+type, count
+"GENERATED", 21
+"PERFORMED", 21
+"RESULTED_IN", 19
+"PART_OF", 14
+"IMPLEMENTS", 11
+"CONTAINS", 7
+"USES", 7
+"EXHIBITS_FAILURE", 5
+"HAS_EVENT", 5
+"CONFIGURES", 5
+"INTRODUCES_RISK", 4
+"HAS_SESSION", 4
+"ENABLES", 3
+"PRODUCED_INSIGHT", 3
+"ANALYZED_SUPPLIER", 3
+"ANALYZED_LEAD", 3
+"RESOLVED_BY", 2
+"ILLUSTRATES", 2
+"PROVIDES", 2
+"ALTERNATIVE_TO", 2
+"APPLIES_TO", 2
+"MANAGES", 2
+"DISTINGUISHES", 2
+"MEASURES", 2
+"HAS_FEATURE", 2
+"SUPPORTS", 2
+"USES_FRAMEWORK", 2
+"IMPLEMENTED_IN", 2
+"ENFORCES", 2
+"EVOLVED_INTO", 1
+"PERFORMED_BY", 1
+"RESOLVES", 1
+"UNBLOCKS", 1
+"USED_TOOL", 1
+"EXPANDS_ON", 1
+"PROTECTS_ASSETS_IN", 1
+"COVERS_BEST_PRACTICES_FOR", 1
+"DEFINES_KPI_FOR", 1
+"RESOLVES_INCIDENTS_IN", 1
+"TRANSLATES", 1
+"DEPLOYS", 1
+"REQUIRES", 1
+"CONSTRAINS", 1
+"MANIFESTS_IN", 1
+"SOLVES", 1
+"MODIFIES", 1
+"EXPLAINS_ROOT_CAUSE", 1
+"GUIDES_DESIGN", 1
+"INFORMS", 1
+"COMPLEMENTS", 1
+"USES_TECHNOLOGY", 1
+"EXPERIENCES", 1
+"HAS_ARCHITECTURE", 1
+"LEVERAGES", 1
+"DEPENDS_ON", 1
+"INSTALLED_IN", 1
+"PROVIDES_MEMORY_TO", 1
+"HOSTS", 1
+"CONNECTS_VIA", 1
+"HAS_STRUCTURE", 1
+"BUILDING_ON", 1
+"OPERATES_IN", 1
+"GUIDED_DEBUGGING", 1
+"ANALYZES", 1
+"APPLIES", 1
+"EVALUATES", 1
+"REVISITS_AGAINST", 1
+"CONTRASTS_WITH", 1
+"UPDATES", 1
+"DOCUMENTS", 1
+"HAS_SYSTEM", 1
+"ORCHESTRATES", 1
+"SUPPORTS_AUTOMATION", 1
+"SUPPORTS_TESTING", 1
+"SUPPORTS_ORCHESTRATION", 1
+"SUPPORTS_INFRASTRUCTURE", 1
+"SUPPORTS_DATA_INTEGRITY", 1
+"SUPPORTS_MONITORING", 1
+"SUPPORTS_MANAGEMENT", 1
+"COULD_HAVE_RESOLVED", 1
+"COULD_HAVE_PREVENTED", 1
+"ENHANCES_VISIBILITY_OF", 1
+"EXTRACTS_FROM", 1
+"LOADS_INTO", 1
+"GOVERNS", 1
+"SUPERSEDES", 1
+"INSTANCE_OF", 1
+"EXTENDS_VIA", 1
+"STORES_DATA_FOR", 1
+"FOLLOWS", 1
+"EMBODIES", 1
+"CODIFIES", 1
+
+[4/11] Constraints...
+name, type, labelsOrTypes, properties
+"agent_name_unique", "UNIQUENESS", ["AIAgent"], ["name"]
+"architecture_pattern_unique", "UNIQUENESS", ["ArchitecturePattern"], ["name"]
+"container_tech_unique", "UNIQUENESS", ["ContainerTech"], ["name"]
+"failure_mode_unique", "UNIQUENESS", ["FailureMode"], ["name"]
+"metric_unique", "UNIQUENESS", ["PerformanceMetric"], ["name"]
+"problem_domain_unique", "UNIQUENESS", ["ProblemDomain"], ["name"]
+"security_concern_unique", "UNIQUENESS", ["SecurityConcern"], ["name"]
+"system_component_unique", "UNIQUENESS", ["SystemComponent"], ["name"]
+"transport_protocol_unique", "UNIQUENESS", ["TransportProtocol"], ["name"]
+
+[5/11] Indexes...
+name, type, labelsOrTypes, properties, state
+"agent_name_unique", "RANGE", ["AIAgent"], ["name"], "ONLINE"
+"agent_role", "RANGE", ["AIAgent"], ["role"], "ONLINE"
+"architecture_pattern_unique", "RANGE", ["ArchitecturePattern"], ["name"], "ONLINE"
+"container_tech_unique", "RANGE", ["ContainerTech"], ["name"], "ONLINE"
+"failure_mode_unique", "RANGE", ["FailureMode"], ["name"], "ONLINE"
+"index_343aff4e", "LOOKUP", NULL, NULL, "ONLINE"
+"index_43d16e71", "RANGE", ["Memory"], ["name"], "ONLINE"
+"index_f7700477", "LOOKUP", NULL, NULL, "ONLINE"
+"memory_metadata_idx", "FULLTEXT", ["Memory"], ["name", "type"], "ONLINE"
+"metric_unique", "RANGE", ["PerformanceMetric"], ["name"], "ONLINE"
+"observation_content_idx", "FULLTEXT", ["Observation"], ["content"], "ONLINE"
+"problem_domain_unique", "RANGE", ["ProblemDomain"], ["name"], "ONLINE"
+"search", "FULLTEXT", ["Memory"], ["name", "type", "observations"], "ONLINE"
+"security_concern_unique", "RANGE", ["SecurityConcern"], ["name"], "ONLINE"
+"system_component_unique", "RANGE", ["SystemComponent"], ["name"], "ONLINE"
+"transport_protocol_unique", "RANGE", ["TransportProtocol"], ["name"], "ONLINE"
+
+[6/11] BMAD Artifacts...
+type, count
+["Memory", "AIAgent"], 1
+["Memory", "System"], 1
+["AIAgent"], 8
+
+[7/11] AIAgent Details (if exist)...
+n.name, n.role, n.created_date
+"Brooks", NULL, NULL
+"Jay", "Analyst", NULL
+"Winston", "Architect", NULL
+"Dutch", "PM", NULL
+"Troy", "TEA", NULL
+"Bob", "Scrum Master", NULL
+"Allura", "UX Expert", NULL
+"BMad Master", "Master", NULL
+"BMad Orchestrator", "Orchestrator", NULL
+
+[8/11] Orphaned Nodes...
+type, count
+["AIAgent"], 8
+["PerformanceMetric"], 5
+["Memory", "Event"], 4
+["Memory", "Insight"], 3
+["ContainerTech"], 3
+
+[9/11] Graph Connectivity...
+type, avg_connections
+"Memory", 416.0
+"ArchitecturePattern", 17.0
+"SecurityConcern", 5.0
+"SystemComponent", 5.0
+"FailureMode", 5.0
+
+[10/11] Property Keys...
+propertyKey
+"alias"
+"auth_token"
+"authenticated"
+"backup_file"
+"branch"
+"category"
+"checksum"
+"commonality"
+"complexity"
+"complexity_level"
+"compressed"
+"config_path"
+"connectionType"
+"content"
+"critical"
+"cve_equivalent"
+"description"
+"dimension"
+"dood_value"
+"duration_seconds"
+
+[11/11] Recent Activity...
+type, identifier, date
+["Memory", "Event"], "Event-Brooks-Neo4j-MCP-Gateway-Fix-2026-01-19", 2026-01-19T07:39:55.939Z
+["Memory", "DebugSession"], "DebugSession-2026-01-18-Brooks-DD", 2026-01-18T12:36:34.343Z
+
+╔════════════════════════════════════════════════════════════════╗
+║                     Audit Complete                              ║
+╚════════════════════════════════════════════════════════════════╝

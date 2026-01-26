@@ -1,0 +1,57 @@
+# Project Group Configuration: Faith Meats
+# =========================================
+# Purpose: Project-specific context for Faith Meats e-commerce platform
+# Created: 2026-01-25
+# Owner: BMad System
+
+group_id: faith-meats
+name: Faith Meats
+description: E-commerce platform for faith-based meat products
+
+# Scope configuration
+scope: project_specific
+
+# Agent access
+agents:
+  - name: Jay
+    role: Analyst
+    access_level: full
+  - name: Winston
+    role: Architect
+    access_level: full
+  - name: Brooks
+    role: Developer
+    access_level: full
+  - name: Dutch
+    role: PM
+    access_level: full
+  - name: Troy
+    role: TEA
+    access_level: full
+
+# Brain configuration
+brain:
+  name: Faith Meats Brain
+  scope: project_specific
+  memory_retention_days: 90
+
+# Integration points
+integrations:
+  - name: GitHub
+    enabled: true
+    repo_pattern: faith-meats/*
+  - name: Notion
+    enabled: true
+    database_id: faith-meats-docs
+
+# Compliance requirements
+compliance:
+  - PCI-DSS
+  - GDPR
+
+# Tags for pattern matching
+tags:
+  - ecommerce
+  - faith-based
+  - retail
+  - b2c

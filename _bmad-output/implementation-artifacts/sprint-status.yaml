@@ -1,0 +1,77 @@
+# generated: 2026-01-25
+# project: Neo4j
+# project_key: neo4j
+# tracking_system: file-system
+# story_location: "{project-root}/_bmad-output/implementation-artifacts"
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog -> in-progress: Automatically when first story is created (via create-story)
+#   - in-progress -> done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-01-25
+project: Neo4j
+project_key: neo4j
+tracking_system: file-system
+story_location: "{project-root}/_bmad-output/implementation-artifacts"
+
+development_status:
+  # Epic 1: Agents Capture Their Learning
+  epic-1: done
+  1-1-initialize-agent-memory-system: done
+  1-2-async-neo4j-client-implementation: done
+  1-3-query-and-review-agent-work-history: done
+  epic-1-retrospective: optional
+
+  # Epic 2: Agents Share Knowledge
+  epic-2: done
+  2-1-generate-insights-from-outcomes: done
+  2-2-manage-pattern-library: done
+  2-3-share-high-confidence-insights-across-agents: done
+  epic-2-retrospective: optional
+
+  # Epic 3: Multi-Project Learning
+  epic-3: done
+  3-1-enforce-multi-tenant-isolation: done
+  3-2-implement-brain-scoping-model: done
+  3-3-integrate-notion-knowledge-base: done
+  3-4-fast-pattern-matching-query-engine: done
+  epic-3-retrospective: optional
+
+  # Epic 4: System Maintains Itself
+  epic-4: in-progress
+  4-1-apply-temporal-decay-to-stale-insights: done
+  4-2-track-pattern-effectiveness-daily: done
+  4-3-aggregate-old-events: done
+  4-4-detect-and-resolve-orphaned-relationships: backlog
+  4-5-escalate-pattern-contradictions-for-review: backlog
+  epic-4-retrospective: optional
+
+  # Epic 5: Learning is Visible
+  epic-5: backlog
+  5-1-export-learning-metrics-to-prometheus: backlog
+  epic-5-retrospective: optional

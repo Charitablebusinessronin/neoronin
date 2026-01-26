@@ -2,6 +2,59 @@
 
 A production-ready Neo4j memory infrastructure for persistent graph-backed AI systems. Implements Constitution Principle VI with automated APOC-based backups, recovery procedures, health monitoring, and comprehensive audit logging.
 
+## Phase 2: BMAD Agent Memory Integration (In Progress)
+
+This project is being extended with **BMAD Agent Memory Integration** - a learning system that enables AI agents to capture, share, and refine knowledge from their work.
+
+### BMAD Architecture Components
+
+| Component | Purpose | Port/Schedule |
+|-----------|---------|---------------|
+| **EventLoggerMiddleware** | Captures GitHub actions as events (commits, PRs, reviews) | Port 8001 |
+| **QueryTemplateLibrary** | Parameterized query templates with mandatory group_id filtering | Library |
+| **PatternManager** | Reusable pattern library with LRU cache (100 patterns, 1hr TTL) | Library |
+| **InsightGeneratorEngine** | Analyzes outcomes to generate insights with confidence scoring | Daily 2:00 AM |
+| **RelevanceScoringService** | Temporal decay for stale insights (90-day half-life) | Daily 2:10 AM |
+| **HealthCheckService** | Orphan detection and agent workflow integrity validation | Weekly Sunday 1 AM |
+
+### BMAD Agents
+
+9 BMAD agents with persistent learning capabilities:
+- **Jay** - Frontend specialist
+- **Winston** - Architect
+- **Brooks** - Product Manager
+- **Dutch** - Security
+- **Troy** - DevOps
+- **Bob** - Backend specialist
+- **Allura** - UX Designer
+- **Master** - BMad orchestrator
+- **Orchestrator** - Agent coordination
+
+### Multi-Tenant Architecture
+
+Three project groups with scoped knowledge isolation:
+- **faith-meats** - Faith-based content platform
+- **diff-driven-saas** - SaaS with git diff integration
+- **global-coding-skills** - Universal coding patterns (shared across all)
+
+### BMAD Features
+
+- **Event Capture**: GitHub → Event → Solution → Outcome chains
+- **Pattern Library**: Reusable solutions tracked with success_rate, usage_count
+- **Insight Generation**: Automated pattern detection with confidence scoring
+- **Cross-Agent Learning**: Daily knowledge sharing between agents
+- **Brain Scoping**: Three-tier knowledge (agent-specific, project-specific, global)
+- **Temporal Decay**: Stale insights lose confidence over time
+
+### BMAD Implementation Status
+
+- ✅ **Phase 1 Complete**: Technical Architecture (6 components mapped)
+- ✅ **Phase 1 Complete**: Implementation Readiness Check (0 blocking issues)
+- ✅ **Phase 2 Complete**: Epics & Stories (5 epics, 16 stories)
+- ⏳ **Phase 2 In Progress**: Story implementation beginning with Story 1.1
+
+See `_bmad-output/planning-artifacts/epics.md` for complete epic breakdown.
+
 ## Features
 
 ### 🗄️ Persistent Storage
@@ -67,6 +120,8 @@ A production-ready Neo4j memory infrastructure for persistent graph-backed AI sy
 │          Neo4j Database (5.13.0)            │
 │  - Community Edition                        │
 │  - APOC Plugin Enabled                      │
+│  - BMAD Schema: Event, Solution, Outcome   │
+│  - BMAD Schema: Pattern, Insight, AIAgent   │
 │  - Volume: grap-neo4j-data (/data)          │
 │  - Volume: grap-backups (/import)           │
 └────────────┬────────────────────────────────┘
@@ -80,7 +135,33 @@ A production-ready Neo4j memory infrastructure for persistent graph-backed AI sy
     │  - Logic Checks │
     │  - Volume:      │
     │    grap-backups │
-    └─────────────────┘
+└───────┤                │
+        └────────────────┘
+
+┌─────────────────────────────────────────────┐
+│          BMAD Learning Layer                │
+│                                             │
+│  ┌────────────────────┐  ┌──────────────┐  │
+│  │ EventLoggerMiddleware│ │PatternManager│  │
+│  │ (Port 8001)         │ │(LRU Cache)   │  │
+│  │ - GitHub MCP Hook  │ │- 100 patterns │  │
+│  │ - Queue on Failure │ │- 1hr TTL      │  │
+│  └────────────────────┘  └──────────────┘  │
+│                                             │
+│  ┌────────────────────┐  ┌──────────────┐  │
+│  │InsightGenerator    │ │RelevanceScore │  │
+│  │(Daily 2:00 AM)     │ │(Daily 2:10AM)│  │
+│  │ - Pattern Detect   │ │- 90-day decay│  │
+│  │ - Confidence Score │ │- Usage boost  │  │
+│  └────────────────────┘  └──────────────┘  │
+│                                             │
+│  ┌────────────────────┐  ┌──────────────┐  │
+│  │QueryTemplateLib    │ │HealthCheckSvc │  │
+│  │(Parameterized)     │ │(Weekly 1 AM) │  │
+│  │ - group_id filter  │ │- Orphan det. │  │
+│  │ - Injection safe   │ │- Schema check│  │
+│  └────────────────────┘  └──────────────┘  │
+└─────────────────────────────────────────────┘
 ```
 
 **Note**: We purposely avoid `neo4j-admin` backups to maintain compatibility with standard Docker volumes and Community Edition limitations. We use `apoc.export.graphml.all` to dump the graph structure and data to the shared volume.
@@ -106,7 +187,22 @@ Grap/
 │   ├── backup/             # BackupManager logic (APOC based)
 │   └── health/             # Health check scripts
 ├── src/                    # Shared library code
+│   ├── event_logger.py     # EventLoggerMiddleware
+│   ├── query_templates.py  # QueryTemplateLibrary
+│   ├── pattern_manager.py  # PatternManager
+│   ├── insight_generator.py # InsightGeneratorEngine
+│   ├── relevance_scoring.py # RelevanceScoringService
+│   └── health_check.py     # HealthCheckService
+├── _bmad-output/
+│   ├── docs/               # PRD, Architecture docs
+│   ├── planning-artifacts/ # Epics, readiness reports
+│   ├── implementation-artifacts/ # Story files, sprint status
+│   └── schemas/            # BMAD Cypher schema scripts
+├── _bmad/                  # BMAD workflow system
+│   ├── bmm/                # Workflow definitions
+│   └── core/               # Core execution engine
 ├── docker-compose.yml      # Service definition
+├── PLANNING.md             # Project planning status
 └── README.md               # This file
 ```
 

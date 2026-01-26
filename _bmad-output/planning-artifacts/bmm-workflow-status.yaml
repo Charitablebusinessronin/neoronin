@@ -1,0 +1,21 @@
+generated: "2026-01-25T13:12:00Z"
+project: "Neo4j"
+project_type: "Graph Durability"
+selected_track: "enterprise-bmad-method"
+field_type: "brownfield"
+workflow_path: "{project-root}/_bmad/bmm/workflows/workflow-status/paths/enterprise-brownfield.yaml"
+workflow_status:
+  document-project: required
+  brainstorm-project: optional
+  research: optional
+  product-brief: optional
+  prd: "_bmad-output/docs/BMAD_PRD.md"
+  prd_completed: "2026-01-25T13:40:00Z"
+  create-ux-design: conditional
+  create-architecture: "_bmad-output/docs/architecture/architecture.md"
+  create-architecture_completed: "2026-01-25T15:33:00Z"
+  create-epics-and-stories: "_bmad-output/planning-artifacts/epics.md"
+  create-epics-and-stories_completed: "2026-01-25T15:33:00Z"
+  test-design: optional
+  implementation-readiness: required
+  sprint-planning: required

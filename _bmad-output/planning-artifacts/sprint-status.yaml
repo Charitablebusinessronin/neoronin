@@ -1,0 +1,77 @@
+---
+# Sprint Status Tracking for Brooks Memory Manager
+# Generated: 2026-01-25T15:36:00Z
+# Project: Neo4j / Brooks Memory Manager
+
+project_name: "Neo4j / Brooks Memory Manager"
+sprint_start: "2026-01-27"
+sprint_end: "2026-02-14"
+epics_file: "_bmad-output/planning-artifacts/epics.md"
+
+# Story Status Legend:
+# - ready-for-dev: Story is ready to be picked up by Brooks
+# - in-progress: Brooks is currently working on this story
+# - in-review: Story implementation complete, awaiting review
+# - done: Story fully complete and validated
+# - blocked: Story cannot proceed due to dependency or issue
+
+stories:
+  # Epic 1: The Neural Backbone (Identity & Client)
+  - id: "1.1"
+    title: "Core Infrastructure Scaffold"
+    epic: "Epic 1: The Neural Backbone"
+    status: "ready-for-dev"
+    assigned_to: "Brooks"
+    priority: "P0"
+    dependencies: []
+    
+  - id: "1.2"
+    title: "Async Neo4j Client Implementation"
+    epic: "Epic 1: The Neural Backbone"
+    status: "ready-for-dev"
+    assigned_to: "Brooks"
+    priority: "P0"
+    dependencies: ["1.1"]
+    
+  # Epic 2: The Event Stream (Capture & Ingestion)
+  - id: "2.1"
+    title: "Event Capture Middleware"
+    epic: "Epic 2: The Event Stream"
+    status: "ready-for-dev"
+    assigned_to: "Brooks"
+    priority: "P1"
+    dependencies: ["1.2"]
+    
+  # Epic 3: The Insight Engine (Learning & Refinement)
+  - id: "3.1"
+    title: "Nightly Insight Batch Cycle"
+    epic: "Epic 3: The Insight Engine"
+    status: "ready-for-dev"
+    assigned_to: "Brooks"
+    priority: "P1"
+    dependencies: ["2.1"]
+    
+  # Epic 4: Synaptic Health (Archival & Recovery)
+  - id: "4.1"
+    title: "Event Aggregation Logic"
+    epic: "Epic 4: Synaptic Health"
+    status: "ready-for-dev"
+    assigned_to: "Brooks"
+    priority: "P2"
+    dependencies: ["3.1"]
+
+# Sprint Metrics
+metrics:
+  total_stories: 5
+  ready_for_dev: 5
+  in_progress: 0
+  in_review: 0
+  done: 0
+  blocked: 0
+
+# Notes
+notes: |
+  Phase 2 Sprint - Event Capture & Insight Generation
+  All stories are marked ready-for-dev as planning is complete.
+  Brooks should start with Story 1.1 (Core Infrastructure Scaffold).
+  Each story has clear dependencies - must complete in order.

@@ -1,0 +1,67 @@
+# Project Group Configuration: Global Coding Skills
+# ==================================================
+# Purpose: Cross-project universal patterns and best practices
+# Created: 2026-01-25
+# Owner: BMad System
+
+group_id: global-coding-skills
+name: Global Coding Skills
+description: Cross-project universal patterns, best practices, and reusable code knowledge
+
+# Scope configuration
+scope: global
+
+# Agent access (all agents have access to global knowledge)
+agents:
+  - name: Jay
+    role: Analyst
+    access_level: full
+  - name: Winston
+    role: Architect
+    access_level: full
+  - name: Brooks
+    role: Developer
+    access_level: full
+  - name: Dutch
+    role: PM
+    access_level: full
+  - name: Troy
+    role: TEA
+    access_level: full
+  - name: Bob
+    role: Scrum Master
+    access_level: full
+  - name: Allura
+    role: UX Expert
+    access_level: full
+  - name: BMad Master
+    role: Master
+    access_level: full
+  - name: BMad Orchestrator
+    role: Orchestrator
+    access_level: full
+
+# Brain configuration
+brain:
+  name: BMAD Global Brain
+  scope: global
+  memory_retention_days: 365
+
+# Integration points
+integrations:
+  - name: GitHub
+    enabled: true
+    repo_pattern: "*"
+  - name: Notion
+    enabled: true
+    database_id: global-docs
+
+# Compliance requirements
+compliance: []
+
+# Tags for pattern matching
+tags:
+  - patterns
+  - best-practices
+  - cross-project
+  - universal

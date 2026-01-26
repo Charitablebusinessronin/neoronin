@@ -1,0 +1,59 @@
+# Project Group Configuration: Diff-Driven SaaS
+# ==============================================
+# Purpose: SaaS platform for difference-driven development tools
+# Created: 2026-01-25
+# Owner: BMad System
+
+group_id: diff-driven-saas
+name: Diff-Driven SaaS
+description: SaaS platform for code diff analysis and development tools
+
+# Scope configuration
+scope: project_specific
+
+# Agent access
+agents:
+  - name: Jay
+    role: Analyst
+    access_level: full
+  - name: Winston
+    role: Architect
+    access_level: full
+  - name: Brooks
+    role: Developer
+    access_level: full
+  - name: Dutch
+    role: PM
+    access_level: full
+  - name: Troy
+    role: TEA
+    access_level: full
+  - name: Allura
+    role: UX Expert
+    access_level: full
+
+# Brain configuration
+brain:
+  name: Diff-Driven SaaS Brain
+  scope: project_specific
+  memory_retention_days: 90
+
+# Integration points
+integrations:
+  - name: GitHub
+    enabled: true
+    repo_pattern: diff-driven/*
+  - name: Notion
+    enabled: true
+    database_id: diff-driven-docs
+
+# Compliance requirements
+compliance:
+  - SOC2
+
+# Tags for pattern matching
+tags:
+  - saas
+  - developer-tools
+  - code-analysis
+  - b2b
