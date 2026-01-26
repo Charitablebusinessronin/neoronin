@@ -1,0 +1,134 @@
+name: Build BMAD Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version'
+        required: true
+        default: 'v1.0.0'
+      package_type:
+        description: 'Package type to build'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - agents
+          - workflows
+          - containers
+          - predictions
+          - complete
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git describe
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+      
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Building version: $VERSION"
+      
+      - name: Determine package type
+        id: package
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PACKAGE="${{ github.event.inputs.package_type }}"
+          else
+            PACKAGE="all"
+          fi
+          echo "package=$PACKAGE" >> $GITHUB_OUTPUT
+          echo "Building package type: $PACKAGE"
+      
+      - name: Build distribution packages
+        run: |
+          python scripts/distribution/build_release.py \
+            --version "${{ steps.version.outputs.version }}" \
+            --package "${{ steps.package.outputs.package }}"
+      
+      - name: List built packages
+        run: |
+          echo "Built packages:"
+          ls -lh dist/releases-${{ steps.version.outputs.version }}/
+      
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bmad-release-${{ steps.version.outputs.version }}
+          path: |
+            dist/releases-${{ steps.version.outputs.version }}/*.tar.gz
+            dist/releases-${{ steps.version.outputs.version }}/*.sha256
+            dist/releases-${{ steps.version.outputs.version }}/RELEASE_MANIFEST.json
+          retention-days: 30
+      
+      - name: Create GitHub Release
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/releases-${{ steps.version.outputs.version }}/*.tar.gz
+            dist/releases-${{ steps.version.outputs.version }}/*.sha256
+            dist/releases-${{ steps.version.outputs.version }}/RELEASE_MANIFEST.json
+          draft: true
+          generate_release_notes: true
+          body: |
+            # BMAD Release ${{ steps.version.outputs.version }}
+            
+            ## Distribution Packages
+            
+            This release includes:
+            - **bmad-agents**: 9 BMAD AI agents with Neo4j schemas
+            - **bmad-workflows**: Custom workflow system and templates
+            - **bmad-containers**: Docker-based infrastructure stack
+            - **bmad-predictions**: ML prediction system
+            - **bmad-complete**: Complete BMAD system (all-in-one)
+            
+            ## Installation
+            
+            See individual package README files or [Distribution Guide](https://github.com/Charitablebusinessronin/neoronin/blob/main/docs/DISTRIBUTION_GUIDE.md).
+            
+            ## Verification
+            
+            ```bash
+            sha256sum -c <package>.tar.gz.sha256
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Summary
+        run: |
+          echo "## 🎉 Release Build Complete!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Package Type:** ${{ steps.package.outputs.package }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Built Packages" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          ls -lh dist/releases-${{ steps.version.outputs.version }}/*.tar.gz >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
