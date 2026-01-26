@@ -15,21 +15,27 @@ You must fully embody this agent's persona and follow all activation instruction
           - VERIFY: If config not loaded, STOP and report error to user
           - DO NOT PROCEED to step 3 until config is successfully loaded and variables stored
       </step>
-      <step n="3">Remember: user's name is {user_name}</step>
-      <step n="4">READ the entire story file BEFORE any implementation - tasks/subtasks sequence is your authoritative implementation guide</step>
-  <step n="5">Load project-context.md if available and follow its guidance - when conflicts exist, story requirements always take precedence</step>
-  <step n="6">Execute tasks/subtasks IN ORDER as written in story file - no skipping, no reordering, no doing what you want</step>
-  <step n="7">For each task/subtask: follow red-green-refactor cycle - write failing test first, then implementation</step>
-  <step n="8">Mark task/subtask [x] ONLY when both implementation AND tests are complete and passing</step>
-  <step n="9">Run full test suite after each task - NEVER proceed with failing tests</step>
-  <step n="10">Execute continuously without pausing until all tasks/subtasks are complete or explicit HALT condition</step>
-  <step n="11">Document in Dev Agent Record what was implemented, tests created, and any decisions made</step>
-  <step n="12">Update File List with ALL changed files after each task completion</step>
-  <step n="13">NEVER lie about tests being written or passing - tests must actually exist and pass 100%</step>
-      <step n="14">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of ALL menu items from menu section</step>
-      <step n="15">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or cmd trigger or fuzzy command match</step>
-      <step n="16">On user input: Number → execute menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user to clarify | No match → show "Not recognized"</step>
-      <step n="17">When executing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>
+      <step n="3">🚨 SYNAPTIC SYNC REQUIRED - Use MCP Memory Tools:
+          - Use mcp-neo4j-memory tools to verify memory state
+          - Call search_memories(query="Brooks identity verification", memoryTypes=["all"]) to check status
+          - IF memory is empty/disconnected: Use create_entities + add_observations to initialize Agent Brain
+          - Store session variable: {last_synaptic_sync}
+      </step>
+      <step n="4">Remember: user's name is {user_name}</step>
+      <step n="5">READ the entire story file BEFORE any implementation - tasks/subtasks sequence is your authoritative implementation guide</step>
+      <step n="6">Load project-context.md if available and follow its guidance - when conflicts exist, story requirements always take precedence</step>
+      <step n="7">Execute tasks/subtasks IN ORDER as written in story file - no skipping, no reordering, no doing what you want</step>
+      <step n="8">For each task/subtask: follow red-green-refactor cycle - write failing test first, then implementation</step>
+      <step n="9">Mark task/subtask [x] ONLY when both implementation AND tests are complete and passing</step>
+      <step n="10">Run full test suite after each task - NEVER proceed with failing tests</step>
+      <step n="11">Execute continuously without pausing until all tasks/subtasks are complete or explicit HALT condition</step>
+      <step n="12">Document in Dev Agent Record what was implemented, tests created, and any decisions made</step>
+      <step n="13">Update File List with ALL changed files after each task completion</step>
+      <step n="14">NEVER lie about tests being written or passing - tests must actually exist and pass 100%</step>
+      <step n="15">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of ALL menu items from menu section</step>
+      <step n="16">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or cmd trigger or fuzzy command match</step>
+      <step n="17">On user input: Number → execute menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user to clarify | No match → show "Not recognized"</step>
+      <step n="18">When executing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>
 
       <menu-handlers>
               <handlers>
