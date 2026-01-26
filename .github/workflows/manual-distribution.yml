@@ -1,0 +1,130 @@
+name: Manual Distribution Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_types:
+        description: 'Comma-separated package types'
+        required: true
+        default: 'all'
+      create_release:
+        description: 'Create GitHub release?'
+        type: boolean
+        default: false
+      release_draft:
+        description: 'Create as draft release?'
+        type: boolean
+        default: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+      
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(git describe --tags --always)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Using version: $VERSION"
+      
+      - name: Build packages
+        id: build
+        run: |
+          IFS=',' read -ra PACKAGES <<< "${{ github.event.inputs.package_types }}"
+          
+          for package in "${PACKAGES[@]}"; do
+            package=$(echo "$package" | xargs)  # Trim whitespace
+            echo "Building $package package..."
+            python scripts/distribution/build_release.py \
+              --version "${{ steps.version.outputs.version }}" \
+              --package "$package"
+          done
+          
+          echo "packages_built=${PACKAGES[*]}" >> $GITHUB_OUTPUT
+      
+      - name: Generate build summary
+        run: |
+          echo "## 📦 Distribution Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Packages Built:** ${{ steps.build.outputs.packages_built }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Create Release:** ${{ github.event.inputs.create_release }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Package Files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          ls -lh dist/releases-${{ steps.version.outputs.version }}/ >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bmad-manual-build-${{ steps.version.outputs.version }}
+          path: |
+            dist/releases-${{ steps.version.outputs.version }}/*.tar.gz
+            dist/releases-${{ steps.version.outputs.version }}/*.sha256
+            dist/releases-${{ steps.version.outputs.version }}/RELEASE_MANIFEST.json
+          retention-days: 30
+      
+      - name: Create GitHub Release
+        if: github.event.inputs.create_release == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: BMAD ${{ steps.version.outputs.version }}
+          files: |
+            dist/releases-${{ steps.version.outputs.version }}/*.tar.gz
+            dist/releases-${{ steps.version.outputs.version }}/*.sha256
+            dist/releases-${{ steps.version.outputs.version }}/RELEASE_MANIFEST.json
+          draft: ${{ github.event.inputs.release_draft }}
+          generate_release_notes: true
+          body: |
+            # BMAD Manual Build ${{ steps.version.outputs.version }}
+            
+            **Built Packages:** ${{ steps.build.outputs.packages_built }}
+            
+            ## Quick Start
+            
+            ```bash
+            # Download and extract
+            tar -xzf bmad-<package>-${{ steps.version.outputs.version }}.tar.gz
+            cd bmad-<package>-${{ steps.version.outputs.version }}
+            
+            # Install
+            ./install.sh
+            ```
+            
+            ## Documentation
+            
+            - [Distribution Guide](https://github.com/Charitablebusinessronin/neoronin/blob/main/docs/DISTRIBUTION_GUIDE.md)
+            - [Quick Start](https://github.com/Charitablebusinessronin/neoronin/blob/main/docs/QUICKSTART.md)
+            - [Main README](https://github.com/Charitablebusinessronin/neoronin/blob/main/README.md)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Notify completion
+        run: |
+          echo "✅ Distribution build complete!"
+          echo "Version: ${{ steps.version.outputs.version }}"
+          echo "Packages: ${{ steps.build.outputs.packages_built }}"
+          if [ "${{ github.event.inputs.create_release }}" = "true" ]; then
+            echo "GitHub release created!"
+          else
+            echo "Artifacts uploaded (no release created)"
+          fi
