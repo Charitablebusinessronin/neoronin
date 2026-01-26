@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PredictionInputSchema",
+  "description": "Input data contract for all BMAD prediction models",
+  "type": "object",
+  "required": ["model_name", "prediction_date", "features"],
+  "properties": {
+    "model_name": {
+      "type": "string",
+      "enum": [
+        "pattern_effectiveness",
+        "learning_velocity",
+        "knowledge_transfer",
+        "performance_degradation",
+        "confidence_score",
+        "promotion_ranking"
+      ],
+      "description": "Target prediction model identifier"
+    },
+    "prediction_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp for prediction run"
+    },
+    "group_id": {
+      "type": "string",
+      "enum": ["faith-meats", "diff-driven-saas", "global-coding-skills"],
+      "description": "Project group scope (optional for global predictions)"
+    },
+    "features": {
+      "type": "object",
+      "description": "Model-specific feature dictionary",
+      "patternProperties": {
+        "^[a-z_]+$": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"},
+            {"type": "boolean"},
+            {"type": "array"}
+          ]
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "requesting_agent": {
+          "type": "string",
+          "description": "Agent triggering prediction (e.g., 'Brooks')"
+        },
+        "confidence_threshold": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 0.7,
+          "description": "Minimum confidence for actionable predictions"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "model_name": "pattern_effectiveness",
+      "prediction_date": "2026-01-26T02:15:00Z",
+      "group_id": "faith-meats",
+      "features": {
+        "pattern_id": "pattern_auth_429",
+        "usage_count_30d": 12,
+        "success_rate_30d": 0.83,
+        "agent_diversity": 3,
+        "domain_similarity_score": 0.91
+      },
+      "metadata": {
+        "requesting_agent": "Brooks",
+        "confidence_threshold": 0.75
+      }
+    }
+  ]
+}
